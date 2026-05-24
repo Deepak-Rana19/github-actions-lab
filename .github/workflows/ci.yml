@@ -22,14 +22,17 @@ jobs:
       # STEP 3: install dependencies
       - name: Install dependencies
         run: npm install
+        working-directory: ./github-actions-lab
 
       # STEP 4: run tests
       - name: Run tests
         run: npm test
+        working-directory: ./github-actions-lab
 
       # STEP 5: build project
       - name: Build project
         run: npm run build
+        working-directory: ./github-actions-lab
 
       # STEP 6: final message
       - name: Done
