@@ -1,0 +1,36 @@
+name: First CI Pipeline
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  build-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      # STEP 1: get code from GitHub
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # STEP 2: install Node
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      # STEP 3: install dependencies
+      - name: Install dependencies
+        run: npm install
+
+      # STEP 4: run tests
+      - name: Run tests
+        run: npm test
+
+      # STEP 5: build project
+      - name: Build project
+        run: npm run build
+
+      # STEP 6: final message
+      - name: Done
+        run: echo "🎉 CI pipeline completed!"
